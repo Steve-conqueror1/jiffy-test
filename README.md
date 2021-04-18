@@ -7,7 +7,7 @@ node
 `
 node file_name
 `
-например в папку task-A1 
+например в папке task-A1 
 `node balanced.parenthesis.js`
 
 
@@ -17,6 +17,10 @@ node file_name
 
 ### Python
 
-На питон только задача task-A2
+На питон только задача A2
 
-jupiter notebook открывается в google colabs и запускается сразу программа
+jupiter notebook в папке task-A2
+```
+non_fibonacci_numbers.ipynb
+```
+открывается в google colabs и запускается сразу программа
