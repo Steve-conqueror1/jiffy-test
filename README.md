@@ -1,19 +1,21 @@
 # jiffy-test
 
+node 
+`v10 и больше`
 
 # Run NodeJs code
 `
 node file_name
 `
-например в папку task-A1
-node balanced.parenthesis.js
+например в папку task-A1 
+`node balanced.parenthesis.js`
 
 
 # Run Test 
 В папку task-B1 
-`npm run test
-`
-# Python
+` npm install` и ` npm run test`
+
+### Python
 
 На питон только задача task-A2
 
