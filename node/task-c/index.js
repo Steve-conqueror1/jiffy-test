@@ -42,7 +42,7 @@ let ternimalInputs = [];
 r1.on('line', function(line) {
 
     ternimalInputs.push(line);
-    // Stop when the array is 8 values long
+    // Stop when the array is 9 values long
     if (ternimalInputs.length == 9) {
         r1.close();
     }
