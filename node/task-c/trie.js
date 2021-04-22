@@ -3,72 +3,41 @@ const TrieNode = require('./trie.node');
 
 module.exports = class Trie{
     constructor(){
-        this.root = new TrieNode(''); //Root node
-    }
-    //Function to get the index of character 't'
-    getIndex(t){
-        return t.charCodeAt(0) - "a".charCodeAt(0);
+        this.root = new TrieNode('');
     }
 
-    //Function to insert a key,value pair in the Trie
-    insert(key,value){
-        //None keys are not allowed
+    insert(key){
+
         if (key == null){
             return;
         }
 
-        key = key.toLowerCase();  //Keys are stored in lowercase
         let currentNode = this.root;
-        let index = 0;          //To store the character index
 
-        //Iterate the trie with the given character index,
-        //If the index points to null
-        //simply create a TrieNode and go down a level
-        for (var level=0; level<key.length; level++){
-            let index = this.getIndex(key[level]);
-
-            if (currentNode.children[index] == null){
-                currentNode.children[index] = new TrieNode(key[level]);
-                //console.log(String(key[level]) + " inserted");
+        for( let char of [...key]){
+            if(!currentNode.children.has(char)){
+                currentNode.children.set(char, new TrieNode())
             }
-            currentNode = currentNode.children[index];
+            currentNode = currentNode.children.get(char);
         }
-
-        //Mark the end character as leaf node
         currentNode.markAsLeaf();
-        //console.log("'" + key + "' inserted");
     }
 
-
-    //Function to search a given key in Trie
     search(key){
 
         if (key == null){
-            return false; //null key
+            return false;
         }
 
-        key = key.toLowerCase();
         let currentNode = this.root;
-        let index = 0;
 
-        //Iterate the Trie with given character index,
-        //If it is null at any point then we stop and return false
-        //We will return true only if we reach leafNode and have traversed the
-        //Trie based on the length of the key
-
-        for (var level=0; level<key.length; level++){
-            index = this.getIndex(key[level]);
-            if (currentNode.children[index] == null){
+        for( let char of [...key]){
+            currentNode = currentNode.children.get(char);
+            if(currentNode == null){
                 return false;
             }
-            currentNode = currentNode.children[index];
         }
-        if (currentNode != null && currentNode.isEndWord){
-            return true;
-        }
-        return false;
+        return  currentNode.isEndWord;
     }
-
-
 }
 
